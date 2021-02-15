@@ -1,25 +1,11 @@
 from django.shortcuts import render
+from .models import *
 # from django.http import HttpResponse
 # Create your views here.
 
-posts = [
-    {
-        'author': 'OmarMA',
-        'title': 'Blog Post 1',
-        'content': 'First Post Content',
-        'date_posted': 'February 14, 2021'
-    },
-    {
-        'author': 'CoreyMS',
-        'title': 'Blog Post 2',
-        'content': 'Second Post Content',
-        'date_posted': 'February 15, 2021'
-    },
-]
-
 def home(request):
     context = {
-        'posts': posts
+        'posts': Post.objects.all()
     }
     return render(request, 'blog/home.html', context)
 
