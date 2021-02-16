@@ -5,8 +5,10 @@ from .models import *
 
 def home(request):
     context = {
-        'posts': Post.objects.all()
+        'posts': Post.objects.all(),
+        'is_loggedin': request.user.is_authenticated
     }
+
     return render(request, 'blog/home.html', context)
 
 def about(request):
