@@ -1,14 +1,16 @@
-{% extends 'blog/layout.html' %}  {% block content %}
+{% extends 'blog/layout.html' %} {% block content %}
 <div class="content-section">
-  <div class="content-section">
-    <div class="media">
-      <img class="rounded-circle account-img" src="{{user.profile.image.url}}" alt="profile_picture"/>
-      <div class="media-body">
-        <h2 class="account-heading">{{ user.username }}</h2>
-        <p class="text-secondary">{{ user.email }}</p>
-      </div>
+  <div class="media">
+    <a href="{{user.profile.image.url}}" target="_blank"
+      ><img
+        class="rounded-circle account-img"
+        src="{{user.profile.image.url}}"
+        alt="profile_picture"
+    /></a>
+    <div class="media-body">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
     </div>
-    <!-- FORM HERE -->
   </div>
 </div>
 {% endblock content %}
