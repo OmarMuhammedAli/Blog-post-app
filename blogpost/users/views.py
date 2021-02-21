@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .forms import UserRegisterForm
 from blog.models import Post
 
@@ -22,9 +23,11 @@ def register(request):
 
 
 @login_required
-def profile(request):
+def profile(request, user_id):
+    author = User.objects.get(id=user_id)
     context = {
         'title': request.user.username,
-        'posts': Post.objects.filter(author_id=request.user.id).all()
+        'posts': Post.objects.filter(author_id=author.id).all(),
+        'author': author
     }
     return render(request, 'users/profile.html', context)

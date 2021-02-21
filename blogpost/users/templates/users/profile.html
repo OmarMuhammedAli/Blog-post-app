@@ -1,20 +1,19 @@
 {% extends 'blog/layout.html' %} {% block content %}
 <div class="content-section">
   <div class="media">
-    <a href="{{user.profile.image.url}}" target="_blank"
+    <a href="{{author.profile.image.url}}" target="_blank"
       ><img
         class="rounded-circle account-img"
-        src="{{user.profile.image.url}}"
+        src="{{author.profile.image.url}}"
         alt="profile_picture"
     /></a>
     <div class="media-body">
-      <h2 class="account-heading">{{ user.username }}</h2>
-      <p class="text-secondary">{{ user.email }}</p>
+      <h2 class="account-heading">{{ author.username }}</h2>
+      <p class="text-secondary">{{ author.email }}</p>
     </div>
   </div>
 </div>
 {% for post in posts %}
-
 <article class="media content-section">
   <div class="media-body">
     <div class="article-metadata">
@@ -24,4 +23,8 @@
     <p class="article-content">{{ post.content }}</p>
   </div>
 </article>
+{% empty %}
+<div class="content-section">
+  <h5>You don't have any blogs, yet!</h5>
+</div>
 {% endfor %} {% endblock content %}
